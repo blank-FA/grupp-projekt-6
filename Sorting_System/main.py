@@ -10,38 +10,38 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 # Create your objects here.
 ev3 = EV3Brick()
 
-# Define motor ports
+# motor ports
 MOTOR_TOWER = Port.A
 MOTOR_ARM = Port.B
 MOTOR_CLAW = Port.C
 
-# Define sensor ports
+# sensor ports
 SENSOR_COLOR = Port.S1
 SENSOR_TOUCH = Port.S2
 
-# Define colors
+# colors
 COLOR_NONE = Color.NONE
 COLOR_RED = Color.RED
 COLOR_BLUE = Color.BLUE
 COLOR_GREEN = Color.GREEN
 
-# Define positions
+# positions
 POSITION_PICKUP = 0
 POSITION_DROP_OFF = 90
 
-# Define motor speeds
+# motor speeds
 MOTOR_SPEED = 50
 
-# Create motor objects
+# motor objects
 motor_tower = Motor(MOTOR_TOWER)
 motor_arm = Motor(MOTOR_ARM)
 motor_claw = Motor(MOTOR_CLAW)
 
-# Create sensor objects
+# sensor objects
 sensor_color = ColorSensor(SENSOR_COLOR)
 sensor_touch = TouchSensor(SENSOR_TOUCH)
 
-# Functions to control motors
+# control motors
 def turn_tower(degrees):
     motor_tower.run_target(MOTOR_SPEED, degrees)
 
@@ -54,15 +54,15 @@ def control_claw(action):
     elif action == 'close':
         motor_claw.run_target(-MOTOR_SPEED, 90)
 
-# Function to check item presence
+# check item presence
 def check_item_presence():
     return sensor_color.color() != COLOR_NONE
 
-# Function to get item color
+# get item color
 def get_item_color():
     return sensor_color.color()
 
-# Function to drop items off at different locations based on color
+# drop items off at different locations based on color
 def drop_off_item(color):
     if color == COLOR_RED:
         turn_tower(POSITION_DROP_OFF_RED)
